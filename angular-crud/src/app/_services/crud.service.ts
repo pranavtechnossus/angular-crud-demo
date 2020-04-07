@@ -15,5 +15,12 @@ export class CrudService {
     return this.http.get<Employee[]>(this.baseUrl + 'CrudAPI');
   }
 
+  createEmployees(employee: Employee) {
+    return this.http.post(this.baseUrl + 'CrudAPI', employee);
+  }
+
+  deleteEmployee(id) {
+    return this.http.delete(this.baseUrl + 'CrudAPI/' + id);
+  }
 }
 

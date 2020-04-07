@@ -14,7 +14,7 @@ export class GetEmployeeComponentComponent implements OnInit {
   employee: Employee[];
   constructor(private crudService: CrudService) {
   }
-  displayedColumns: string[] = ['id', 'employeeName', 'role', 'salary', 'company'];
+  displayedColumns: string[] = ['id', 'employeeName', 'role', 'salary', 'company', 'action'];
   dataSource = new MatTableDataSource<Employee>(this.employee);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -33,6 +33,12 @@ export class GetEmployeeComponentComponent implements OnInit {
       console.log(error);
     }
     );
+  }
+
+  onDelete(id) {
+    this.crudService.deleteEmployee(id).subscribe(() => {
+      this.loadEmployees();
+    });
   }
 
 }
