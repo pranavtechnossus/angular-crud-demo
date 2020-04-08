@@ -16,11 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateEmployeeComponent } from './crud/create-employee/create-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateEmployeeComponent } from './crud/update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    UpdateEmployeeComponent
   ],
   exports: [
     MatSortModule,

@@ -12,15 +12,23 @@ export class CrudService {
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + 'CrudAPI');
+    return this.http.get<Employee[]>(this.baseUrl);
+  }
+
+  getEmployeeById(id): Observable<Employee> {
+    return this.http.get<Employee>(this.baseUrl + '/' + id);
   }
 
   createEmployees(employee: Employee) {
-    return this.http.post(this.baseUrl + 'CrudAPI', employee);
+    return this.http.post(this.baseUrl, employee);
+  }
+
+  updateEmployees(id: number, employee: Employee) {
+    return this.http.put(`${this.baseUrl}/${id}`, employee);
   }
 
   deleteEmployee(id) {
-    return this.http.delete(this.baseUrl + 'CrudAPI/' + id);
+    return this.http.delete(this.baseUrl + '/' + id);
   }
 }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:64913/api/'
+  apiUrl: 'http://localhost:64913/api/CrudAPI'
 };
 /*
  * For easier debugging in development mode, you can import the following file

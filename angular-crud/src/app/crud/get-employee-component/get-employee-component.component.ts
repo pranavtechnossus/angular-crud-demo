@@ -3,6 +3,7 @@ import { CrudService } from 'src/app/_services/crud.service';
 import { Employee } from 'src/app/models/EmployeeModel';
 import { error } from 'util';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-employee-component',
@@ -12,7 +13,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 export class GetEmployeeComponentComponent implements OnInit {
 
   employee: Employee[];
-  constructor(private crudService: CrudService) {
+  constructor(private crudService: CrudService, private router: Router) {
   }
   displayedColumns: string[] = ['id', 'employeeName', 'role', 'salary', 'company', 'action'];
   dataSource = new MatTableDataSource<Employee>(this.employee);
@@ -39,6 +40,10 @@ export class GetEmployeeComponentComponent implements OnInit {
     this.crudService.deleteEmployee(id).subscribe(() => {
       this.loadEmployees();
     });
+  }
+
+  updateEmployee(id: number){
+    this.router.navigate(['update', id]);
   }
 
 }
